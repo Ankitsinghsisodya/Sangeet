@@ -22,11 +22,19 @@ function showAllSongs(songs) {
     songUl.innerHTML =
       songUl.innerHTML +
       ` <li class="flex gap-x-3 justify-between border rounded-md p-2 text-white
-    bg-gradient-to-r from-yellow-500 to-red-500">
+    bg-gradient-to-r from-yellow-500 to-red-500 cursor-pointer">
                           <img src="./img/music.svg" alt="">
                           <span class="gap-x-2">${song.title}</span>
-                          <img src="./img/play.svg" alt="">
+                          <img src="./img/play.svg" alt="" class="pl-icon z-[10000]">
                       </li>`;
+
+    songContainer.innerHTML += `
+                      <div class="w-[200px] h-[200px] rounded-md border hover:scale-105 transition-all duration-200 relative group">
+                        <img src="./img/play.svg" alt="" class="absolute bg-green-400 rounded-full p-2 hidden group-hover:block bottom-2 right-2 pl-icon2">
+                        <img src="./${song.image}" alt="" class="h-[200px] w-[200px] rounded-md">
+                        <h2 class="text-center text-red-500 font-bold">${song.title}</h2>
+                        <p class="text-blue-400 text-center">${song.author}</p>
+                      </div>`;
   }
 }
 async function main() {
@@ -39,10 +47,25 @@ async function main() {
   //Attach even listener to each song
   Array.from(
     document.querySelector(".song-list").getElementsByTagName("li")
-  ).forEach((e) => {
-    e.addEventListener("click", (event) => {
-      playSong(e.getElementsByTagName("span")[0].textContent);
-    });
+  ).forEach((li) => {
+    const playIcon = li.querySelector(".pl-icon");
+    if (playIcon) {
+      playIcon.addEventListener("click", (event) => {
+        playSong(li.getElementsByTagName("span")[0].textContent);
+      });
+    }
+  });
+
+  // Attach even listener to each card also
+  Array.from(
+    document.querySelector("#songContainer").getElementsByTagName("div")
+  ).forEach((div) => {
+    const playIcon = div.querySelector(".pl-icon2");
+    if (playIcon) {
+      playIcon.addEventListener("click", (e) => {
+        playSong(div.getElementsByTagName("h2")[0].textContent);
+      });
+    }
   });
 
   // Attaching event listener of play and pause at seekbar
@@ -58,9 +81,10 @@ async function main() {
 
   // Add drag functionality to the circle
   const circle = document.querySelector(".circle");
-  const seekBar = document.querySelector(".seekbar");
+  const seekbar = document.querySelector(".seekbar");
+  console.log(seekbar);
 
-  if (circle && seekBar) {
+  if (circle && seekbar) {
     circle.addEventListener("mousedown", (event) => {
       event.preventDefault(); // Prevent unwanted behaviors
       isDragging = true;
@@ -68,18 +92,38 @@ async function main() {
 
     document.addEventListener("mousemove", (event) => {
       if (isDragging) {
-        const rect = seekBar.getBoundingClientRect();
+        const rect = seekbar.getBoundingClientRect();
         const offsetX = event.clientX - rect.left;
         const percentage = Math.min(Math.max(offsetX / rect.width, 0), 1);
         circle.style.left = percentage * 100 + "%";
         currentSong.currentTime = percentage * currentSong.duration;
       }
     });
+    document.querySelector(".seekbar").addEventListener("click", (event) => {
+      const rect = seekbar.getBoundingClientRect();
+      const offsetX = event.clientX - rect.left;
+      const percentage = Math.min(Math.max(offsetX / rect.width, 0), 1);
+      circle.style.left = percentage * 100 + "%";
+      currentSong.currentTime = percentage * currentSong.duration;
+      console.log(percentage);
+    });
 
     document.addEventListener("mouseup", () => {
       isDragging = false;
     });
   }
+
+  //Add an event listener for hamburger
+  document.querySelector(".hamburger").addEventListener("click", () => {
+    document.querySelector(".left").style.left = 0;
+    document.querySelector(".left").style.zIndex = 10000;
+  });
+
+  //Add an event listener for cross
+  document.querySelector(".close").addEventListener("click", () => {
+    document.querySelector(".left").style.left = "-100%";
+    document.querySelector(".left").style.zIndex = "-10000";
+  });
 }
 
 function playSong(song) {

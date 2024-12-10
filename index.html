@@ -40,6 +40,16 @@
             list-style: none;
             font-weight: bold;
         }
+
+        @media (max-width:640px) {
+            .left {
+                width: 400px;
+                position: absolute;
+                left: -100%;
+                transition: all 1s;
+                z-index: -10000;
+            }
+        }
     </style>
 </head>
 
@@ -49,21 +59,31 @@
     <div class="flex flex-row w-[100%] overflow-hidden p-0 min-h-[100vh] justify-between">
 
         <!-- left-section  -->
-        <div class=" h-full left bg-black  min-w-[300px]  p-[12px]  w-full md:w-[25%]">
-
+        <div class=" h-full left bg-black  min-w-[300px]  p-[12px]  w-full md:w-[25%] ">
+            <div class="temp absolute right-0 m-2 group z-[10000]">
+                <img src="./img/close.svg" alt="" class="invert sm:hidden close cursor-pointer z-30">
+            </div>
             <div class="home  rounded-md text-white bg-[#121212]">
-                <di class="logo flex gap-x-6 relative group">
-                    <img src="./img/logo.svg" alt="logo" class="mt-2 ml-1 invert group-hover:to-blue-300" width="50px">
-                    <h1 class="text-[50px] absolute top-0 right-[100px] text-blue-400 group-hover:text-pink-300">Bhajan
-                    </h1>
-                </di>
+                <div class="logo flex gap-x-6 relative group">
+
+                    <div>
+                        <img src="./img/logo.svg" alt="logo" class="mt-2 ml-1 bg-black group-hover:to-blue-300"
+                            width="50px">
+                    </div>
+                    <div>
+                        <h1 class="text-[50px] absolute  text-blue-400 group-hover:text-pink-300">Bhajan
+                        </h1>
+                    </div>
+                </div>
                 <ul class="mt-5 ml-1">
                     <li class="relative flex gap-x-[15px] gap-y-4 invert  text-black hover:underline cursor-pointer">
                         <img src="./img/home.svg" alt="home">
                         Home
                     </li>
-                    <li class="flex gap-x-[15px] gap-y-4 invert  text-black cursor-pointer hover:unsrline"> <img
-                            src="./img/search.svg" alt="search">Search
+                    <li class="flex gap-x-[15px] gap-y-4 mt-1  text-black cursor-pointer hover:unsrline bg-white"> 
+                            <div class="search-bar bg-white">
+                                <input type="text" id="searchInput" placeholder="Search for a song" class="bg-white w-[250px]">
+                            </div>
                     </li>
                 </ul>
 
@@ -79,27 +99,25 @@
                     <ul class="gap-y-3 flex flex-col justify-between">
                     </ul>
                 </div>
-
-
-                <div class="footer flex flex-wrap text-[12px] text-gray-100 gap-[13px] ml-2 mb-2 absolute bottom-2">
+                <!-- footer  -->
+                <div
+                    class="footer  flex-wrap text-[12px] text-gray-100 gap-[13px] ml-2 mb-2 absolute bottom-2 hidden sm:flex">
 
 
                     <div>
-                        <a href="https://www.spotify.com/in-en/legal/" data-encore-id="textLink">Legal</a>
+                        <a href="#" data-encore-id="textLink">Legal</a>
                     </div>
                     <div>
-                        <a href="https://www.spotify.com/in-en/legal/cookies-policy/"
-                            data-encore-id="textLink">Cookies</a>
+                        <a href="#" data-encore-id="textLink">Cookies</a>
                     </div>
                     <div>
-                        <a href="https://www.spotify.com/in-en/legal/privacy-policy/#s3" data-encore-id="textLink">About
+                        <a href="#" data-encore-id="textLink">About
                             Ads</a>
                     </div>
                     <div>
-                        <a href="https://www.spotify.com/in-en/accessibility/"
-                            data-encore-id="textLink">Accessibility</a>
+                        <a href="#" data-encore-id="textLink">Accessibility</a>
                     </div>
-              
+
                 </div>
             </div>
 
@@ -109,12 +127,15 @@
 
         <!-- right section -->
 
-        <div class="right  w-[75%] mt-3 pb-20 relative mx-h-[100vh] overflow-y-hidden hidden md:block">
+        <div class="right  w-[100%] mt-3 pb-20 relative mx-h-[100vh] overflow-y-hidden">
 
             <!-- navbar  -->
             <div
                 class="nav flex justify-between bg-gradient-to-r from-blue-500 to-pink-400 rounded-md p-2 border mr-2 ">
-                <div class="header w-full mt-5 flex">
+                <div class="header w-full mt-5 flex items-center">
+                    <div>
+                        <img src="./img/hamburger.svg" alt="" class="hamburger invert sm:hidden cursor-pointer">
+                    </div>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="30px"
                         height="30px" class="cursor-pointer">
                         <path d="M14.71 6.71a1 1 0 00-1.42-1.42l-6 6a1 1 0 000 1.42l6 6a1 1 0 001.42-1.42L9.41 12z" />
@@ -136,177 +157,43 @@
                 <h1 class="text-white font-semibold text-[50px] font-roboto hover:text-green-400">Sangeet</h1>
             </div>
             <!-- music list  -->
-            <div id="song-container"
-                class=" bg-white flex flex-wrap gap-x-10 gap-y-20 justify-center  max-h-[72vh] overflow-auto no-scrollbar bg-gradient-to-r from-transparent to-blue-500 p-1 pt-2">
-                <!-- card -->
-                <div
-                    class="w-[200px] h-[200px] rounded-md border hover:scale-105 transition-all duration-200 relative group">
-                    <img src="./img/play.svg" alt=""
-                        class="absolute bg-green-400 rounded-full p-2 hidden group-hover:block bottom-2 right-2">
-                    <img src="./img/2234c26ed8cf824f680560fed0337472.jpg" alt="">
-                    <h2 class="text-center text-red-500 font-bold">Tum Prem Ho</h2>
-                    <p class="text-blue-400 text-center">Mohit and Bharat Kamal</p>
-                </div>
-
-                <div
-                    class="w-[200px] h-[200px] rounded-md border hover:scale-105 transition-all duration-200 relative group">
-                    <img src="./img/play.svg" alt=""
-                        class="absolute bg-green-400 rounded-full p-2 hidden group-hover:block bottom-2 right-2">
-                    <img src="./img/2234c26ed8cf824f680560fed0337472.jpg" alt="">
-                    <h2 class="text-center text-red-500 font-bold">Samay Samjhayega</h2>
-                    <p class="text-blue-400 text-center">Mohit and Bharat Kamal</p>
-                </div>
-                <div
-                    class="w-[200px] h-[200px] rounded-md border hover:scale-105 transition-all duration-200 relative group">
-                    <img src="./img/play.svg" alt=""
-                        class="absolute bg-green-400 rounded-full p-2 hidden group-hover:block bottom-2 right-2">
-                    <img src="./img/1200x1200bb.jpg" alt="">
-                    <h2 class="text-center text-red-500 font-bold">Rutho Jo Tum</h2>
-                    <p class="text-blue-400 text-center">Mohit and Bharat Kamal</p>
-                </div>
-                <div
-                    class="w-[200px] h-[200px] rounded-md border hover:scale-105 transition-all duration-200 relative group">
-                    <img src="./img/play.svg" alt=""
-                        class="absolute bg-green-400 rounded-full p-2 hidden group-hover:block bottom-2 right-2">
-                    <img src="./img/Sab-Kuch-Hi-Mera-Kho-Gaya-Lo-Fi-Hindi-2022-20220804212723-500x500.jpg" alt="">
-                    <h2 class="text-center text-red-500 font-bold">Sab kuch Hi Mera kho Gaya</h2>
-                    <p class="text-blue-400 text-center">Mohit and Bharat Kamal</p>
-                </div>
-                <div
-                    class="w-[200px] h-[200px] rounded-md border hover:scale-105 transition-all duration-200 relative group">
-                    <img src="./img/play.svg" alt=""
-                        class="absolute bg-green-400 rounded-full p-2 hidden group-hover:block bottom-2 right-2">
-                    <img src="./img/Hanuman_Chalisa_Poster_7b477131-3a5f-45f9-87c0-a14ae798d996.jpg" alt=""
-                        height="100px" width="200px" class="h-[210px]">
-                    <h2 class="text-center text-red-500 font-bold">Hanuman Chalisa</h2>
-                    <p class="text-blue-400 text-center">Hariharan</p>
-                </div>
-
-                <div
-                    class="w-[200px] h-[200px] rounded-md border hover:scale-105 transition-all duration-200 relative group">
-                    <img src="./img/play.svg" alt=""
-                        class="absolute bg-green-400 rounded-full p-2 hidden group-hover:block bottom-2 right-2">
-                    <img src="./img/ab67616d00001e02c20c7fc86ecd17517e64bc2f.jpeg" alt="">
-                    <h2 class="text-center text-red-500 font-bold">Shree Hari strotam</h2>
-                    <p class="text-blue-400 text-center">Gayathri Devi</p>
-                </div>
-                <div
-                    class="w-[200px] h-[200px] rounded-md border hover:scale-105 transition-all duration-200 relative group">
-                    <img src="./img/play.svg" alt=""
-                        class="absolute bg-green-400 rounded-full p-2 hidden group-hover:block bottom-2 right-2">
-                    <img src="./img/ab67616d0000b27378e2e5b79962af85e2bf8986.jpeg" alt="">
-                    <h2 class="text-center text-red-500 font-bold">Shiv tandav</h2>
-                    <p class="text-blue-400 text-center">Sachet tandon</p>
-                </div>
-
-                <div
-                    class="w-[200px] h-[200px] rounded-md border hover:scale-105 transition-all duration-200 relative group">
-                    <img src="./img/play.svg" alt=""
-                        class="absolute bg-green-400 rounded-full p-2 hidden group-hover:block bottom-2 right-2">
-                    <img src="./img/66510235.webp" alt="" class="h-[200px] w-[200px]">
-                    <h2 class="text-center text-red-500 font-bold">Namo Namo</h2>
-                    <p class="text-blue-400 text-center">Amit Trivedi</p>
-                </div>
-                <div
-                    class="w-[200px] h-[200px] rounded-md border hover:scale-105 transition-all duration-200 relative group">
-                    <img src="./img/play.svg" alt=""
-                        class="absolute bg-green-400 rounded-full p-2 hidden group-hover:block bottom-2 right-2">
-                    <img src="./img/2234c26ed8cf824f680560fed0337472.jpg" alt="">
-                    <h2 class="text-center text-red-500 font-bold">Tum Prem Ho</h2>
-                    <p class="text-blue-400 text-center">Mohit and Bharat Kamal</p>
-                </div>
-
-                <div
-                    class="w-[200px] h-[200px] rounded-md border hover:scale-105 transition-all duration-200 relative group">
-                    <img src="./img/play.svg" alt=""
-                        class="absolute bg-green-400 rounded-full p-2 hidden group-hover:block bottom-2 right-2">
-                    <img src="./img/2234c26ed8cf824f680560fed0337472.jpg" alt="">
-                    <h2 class="text-center text-red-500 font-bold">Samay Samjhayega</h2>
-                    <p class="text-blue-400 text-center">Mohit and Bharat Kamal</p>
-                </div>
-                <div
-                    class="w-[200px] h-[200px] rounded-md border hover:scale-105 transition-all duration-200 relative group">
-                    <img src="./img/play.svg" alt=""
-                        class="absolute bg-green-400 rounded-full p-2 hidden group-hover:block bottom-2 right-2">
-                    <img src="./img/1200x1200bb.jpg" alt="">
-                    <h2 class="text-center text-red-500 font-bold">Rutho Jo Tum</h2>
-                    <p class="text-blue-400 text-center">Mohit and Bharat Kamal</p>
-                </div>
-                <div
-                    class="w-[200px] h-[200px] rounded-md border hover:scale-105 transition-all duration-200 relative group">
-                    <img src="./img/play.svg" alt=""
-                        class="absolute bg-green-400 rounded-full p-2 hidden group-hover:block bottom-2 right-2">
-                    <img src="./img/Sab-Kuch-Hi-Mera-Kho-Gaya-Lo-Fi-Hindi-2022-20220804212723-500x500.jpg" alt="">
-                    <h2 class="text-center text-red-500 font-bold">Sab kuch Hi Mera kho Gaya</h2>
-                    <p class="text-blue-400 text-center">Mohit and Bharat Kamal</p>
-                </div>
-                <div
-                    class="w-[200px] h-[200px] rounded-md border hover:scale-105 transition-all duration-200 relative group">
-                    <img src="./img/play.svg" alt=""
-                        class="absolute bg-green-400 rounded-full p-2 hidden group-hover:block bottom-2 right-2">
-                    <img src="./img/Hanuman_Chalisa_Poster_7b477131-3a5f-45f9-87c0-a14ae798d996.jpg" alt=""
-                        height="100px" width="200px" class="h-[210px]">
-                    <h2 class="text-center text-red-500 font-bold">Hanuman Chalisa</h2>
-                    <p class="text-blue-400 text-center">Hariharan</p>
-                </div>
-
-                <div
-                    class="w-[200px] h-[200px] rounded-md border hover:scale-105 transition-all duration-200 relative group">
-                    <img src="./img/play.svg" alt=""
-                        class="absolute bg-green-400 rounded-full p-2 hidden group-hover:block bottom-2 right-2">
-                    <img src="./img/ab67616d00001e02c20c7fc86ecd17517e64bc2f.jpeg" alt="">
-                    <h2 class="text-center text-red-500 font-bold">Shree Hari strotam</h2>
-                    <p class="text-blue-400 text-center">Gayathri Devi</p>
-                </div>
-                <div
-                    class="w-[200px] h-[200px] rounded-md border hover:scale-105 transition-all duration-200 relative group">
-                    <img src="./img/play.svg" alt=""
-                        class="absolute bg-green-400 rounded-full p-2 hidden group-hover:block bottom-2 right-2">
-                    <img src="./img/ab67616d0000b27378e2e5b79962af85e2bf8986.jpeg" alt="">
-                    <h2 class="text-center text-red-500 font-bold">Shiv tandav</h2>
-                    <p class="text-blue-400 text-center">Sachet tandon</p>
-                </div>
-
-                <div
-                    class="w-[200px] h-[200px] rounded-md border hover:scale-105 transition-all duration-200 relative group">
-                    <img src="./img/play.svg" alt=""
-                        class="absolute bg-green-400 rounded-full p-2 hidden group-hover:block bottom-2 right-2">
-                    <img src="./img/66510235.webp" alt="" class="h-[200px] w-[200px]">
-                    <h2 class="text-center text-red-500 font-bold">Namo Namo</h2>
-                    <p class="text-blue-400 text-center">Amit Trivedi</p>
-                </div>
+            <div id="songContainer"
+                class=" bg-white flex flex-wrap gap-x-10 gap-y-20 justify-center  max-h-[72vh] overflow-auto no-scrollbar bg-gradient-to-r from-transparent to-blue-500 p-2 pt-2 h-full rounded-md mr-2">
+                <!-- card using js  -->
             </div>
 
-            <div class="absolute bottom-10 w-full">
+            <div class="absolute bottom-3 w-full mt-3 mb-5 flex ml-3 justify-between overflow-y-hidden">
 
-                <div class="playbar relative flex   w-full max-w-[98%] h-[37px]  gap-x-2 rounded-3xl bg-gray-500">
+                <div
+                    class="playbar relative   w-ful min-w-[80%] h-[37px]  gap-x-2 rounded-3xl bg-gray-500  oveflow-y-hidden">
 
                     <div
-                        class=" seekBar h-[2px]  border-4 border-green-400 absolute bottom-3  right-4 rounded-xl w-[97%] mx-auto z-[2]">
+                        class="seekbar h-[2px] left-2 border-4 border-green-400 absolute bottom-3  right-4 rounded-xl w-[97%] mx-auto z-[1000]">
                         <div
                             class="circle w-[15px]  h-[15px] rounded-full bg-red-500 absolute  -bottom-2 mx-auto z-0 transition-all duration-100">
                         </div>
                     </div>
-                    <div class="songInfo text-black font-bold z-[100] ml-7 -mt-1 w-full flex">
+                    <div class="songInfo text-black font-bold z-[100] ml-7 -mt-1 w-full flex justify-between">
                         <div class="songName -ml-2 text-white">
-             
                         </div>
-                        <div class="songButton flex  z-10 cursor-pointer mx-auto mt-1">
-    
-                            <img src="./img/prevsong.svg" alt="" id="prev" class="black">
-                            <img src="./img/play.svg" alt="" class="play-icon" id="play" class="black">
-                            <img src="./img/nextsong.svg" alt="" id="next">
-                        </div>
-                        <div class="songTime mr-4 text-white">
-             
-                        </div>
-                    </div>
-                    <div class="songTime">
 
+                        <div class="songTime mr-14 text-white">
+                        </div>
                     </div>
+
+
+                </div>
+                <div
+                    class="songButton flex justify-center  z-10 cursor-pointer mx-auto  bg-green-500  rounded-lg py-2 w-[90%]  md:w-[80px] mr-5">
+
+                    <img src="./img/prevsong.svg" alt="" id="prev" class="black">
+                    <img src="./img/play.svg" alt="" class="play-icon" id="play" class="black">
+                    <img src="./img/nextsong.svg" alt="" id="next">
                 </div>
             </div>
         </div>
+    </div>
+    </div>
     </div>
 
 
