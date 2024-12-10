@@ -279,7 +279,7 @@
 
             <div class="absolute bottom-10 w-full">
 
-                <div class="playbar relative flex  bg-white w-full max-w-[98%] h-[35px]  gap-x-2 rounded-3xl ">
+                <div class="playbar relative flex   w-full max-w-[98%] h-[37px]  gap-x-2 rounded-3xl bg-gray-500">
 
                     <div
                         class=" seekBar h-[2px]  border-4 border-green-400 absolute bottom-3  right-4 rounded-xl w-[97%] mx-auto z-[2]">
@@ -287,16 +287,19 @@
                             class="circle w-[15px]  h-[15px] rounded-full bg-red-500 absolute  -bottom-2 mx-auto z-0 transition-all duration-100">
                         </div>
                     </div>
-                    <div class="songInfo text-black font-bold z-[100] ml-7 -mt-1">
-                        <div class="songTime">
+                    <div class="songInfo text-black font-bold z-[100] ml-7 -mt-1 w-full flex">
+                        <div class="songName -ml-2 text-white">
              
                         </div>
-                    </div>
-                    <div class="songButton flex  z-10 cursor-pointer mx-auto">
-
-                        <img src="./img/prevsong.svg" alt="" id="prev" class="black">
-                        <img src="./img/play.svg" alt="" class="play-icon" id="play" class="black">
-                        <img src="./img/nextsong.svg" alt="" id="next">
+                        <div class="songButton flex  z-10 cursor-pointer mx-auto mt-1">
+    
+                            <img src="./img/prevsong.svg" alt="" id="prev" class="black">
+                            <img src="./img/play.svg" alt="" class="play-icon" id="play" class="black">
+                            <img src="./img/nextsong.svg" alt="" id="next">
+                        </div>
+                        <div class="songTime mr-4 text-white">
+             
+                        </div>
                     </div>
                     <div class="songTime">
 

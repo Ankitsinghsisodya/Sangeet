@@ -11,6 +11,7 @@ async function getSongs() {
   }
 }
 
+let isDragging = false;
 let currentSong = new Audio();
 function showAllSongs(songs) {
   let songUl = document
@@ -54,6 +55,31 @@ async function main() {
       play.src = "./img/play.svg";
     }
   });
+
+  // Add drag functionality to the circle
+  const circle = document.querySelector(".circle");
+  const seekBar = document.querySelector(".seekbar");
+
+  if (circle && seekBar) {
+    circle.addEventListener("mousedown", (event) => {
+      event.preventDefault(); // Prevent unwanted behaviors
+      isDragging = true;
+    });
+
+    document.addEventListener("mousemove", (event) => {
+      if (isDragging) {
+        const rect = seekBar.getBoundingClientRect();
+        const offsetX = event.clientX - rect.left;
+        const percentage = Math.min(Math.max(offsetX / rect.width, 0), 1);
+        circle.style.left = percentage * 100 + "%";
+        currentSong.currentTime = percentage * currentSong.duration;
+      }
+    });
+
+    document.addEventListener("mouseup", () => {
+      isDragging = false;
+    });
+  }
 }
 
 function playSong(song) {
@@ -62,9 +88,12 @@ function playSong(song) {
       if (song === songObj.title) {
         currentSong.src = "./Public/" + songObj.file;
 
-       
         // Update the current time dynamically
         currentSong.addEventListener("timeupdate", () => {
+          if (!isDragging) {
+            document.querySelector(".circle").style.left =
+              (currentSong.currentTime / currentSong.duration) * 100 + "%";
+          }
           const currentTime = formatTime(currentSong.currentTime);
           const totalDuration = formatTime(currentSong.duration);
 
@@ -72,7 +101,12 @@ function playSong(song) {
           document.querySelector(
             ".songTime"
           ).innerHTML = `<p>${currentTime} / ${totalDuration}
-            <span class='text-purple-900'>${songObj.title}</span></p>`;
+            </p>`;
+
+          document.querySelector(
+            ".songName"
+          ).innerHTML = `<p><span class='text-white'>${songObj.title}</span>
+            </p>`;
         });
 
         play.src = "./img/pause.svg";
