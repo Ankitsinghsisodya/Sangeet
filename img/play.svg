@@ -1,3 +1,6 @@
 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M5 20V4L19 12L5 20Z" fill="black" stroke="#141B34" stroke-width="1.5" stroke-linejoin="round"/>
+  <!-- Circle for the circular border -->
+  <circle cx="12" cy="12" r="11" stroke="#141B34" stroke-width="1.5" fill="none" />
+  <!-- Play button in the center -->
+  <path d="M9 16V8L15 12L9 16Z" fill="black" stroke="#141B34" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" />
 </svg>
