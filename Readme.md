@@ -26,4 +26,4 @@ This is a  web application that allows users to view and play Bhaajan from a col
 1. Clone the repository:
 
 ```sh
-git clone https://github.com/your-username/music-system.git
+git clone https://github.com/your-username/Sangeet-system.git

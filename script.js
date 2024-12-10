@@ -11,6 +11,8 @@ async function getSongs() {
   }
 }
 
+let prev = "Nothing";
+let flag = false;
 
 async function main() {
   let currentSong;
@@ -34,6 +36,13 @@ async function main() {
     console.log(songUl.innerHTML);
   }
 
+  document
+    .querySelector(".play-icon")
+    .addEventListener("click", () => {
+      if (flag == true) {
+        prev.pause();
+      }
+    });
   //Attach even listener to each song
   Array.from(
     document.querySelector(".song-list").getElementsByTagName("li")
@@ -44,14 +53,21 @@ async function main() {
     });
   });
 }
+
 async function playSong(song) {
   const songs = await getSongs();
   console.log(song, "playsong ke andar");
   for (const songObj of songs) {
     console.log(song);
     if (song === songObj.title) {
-      console.log("ayush");
+      if (flag) {
+        prev.pause();
+        prev.currentTime = 0;
+      }
+      flag = true;
+
       let audio = new Audio("./Public/" + songObj.file);
+      prev = audio;
       console.log("./Public/" + songObj.file);
       audio.play();
       break;
