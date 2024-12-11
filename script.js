@@ -179,7 +179,7 @@ function playSong(song) {
       if (songObj.title == song) {
         if (song === songObj.title) {
           currentSong.src = songObj.file;
-
+          console.log(currentSong.src);
           // Update the current time dynamically
           currentSong.addEventListener("timeupdate", () => {
             if (!isDragging) {
