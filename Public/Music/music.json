@@ -5,33 +5,29 @@
     "image": "img/Namo_namo.webp",
     "author": "Amit Trivedi"
   },
-  {
-    "title": "Rutho Jo Tum Toh Manau",
-    "file": "Music/Rutho-Jo-Tum-Toh-Manau.mp3",
-    "image": "img/Rutho_Jo_Tum.jpg",
-    "author": "Mohit Chauhan"
-  },
+ 
+
   {
     "title": "Tum Prem Ho",
-    "file": "Music/Tum Prem Ho.mp3",
+    "file": "Music/TumPremHo.mp3",
     "image": "img/Tum_prem_ho.jpg",
     "author": "Mohit and Bharat Kamal"
   },
   {
     "title": "Shiv Tandav Stotram",
-    "file": "Music/Shiv Tandav Stotram.mp3",
+    "file": "Music/ShivTandavStotram.mp3",
     "image": "img/Shiv_stotam.jpeg",
     "author": "Shankar Mahadevan"
   },
   {
     "title": "Shree Hanuman Chalisa",
-    "file": "Music/Shree Hanuman Chalisa.mp3",
+    "file": "Music/ShreeHanumanChalisa.mp3",
     "image": "img/Hanuman_Chalisa_Poster.jpg",
     "author": "Hariharan"
   },
   {
     "title": "Shree Hari Stotram",
-    "file": "Music/Shree Hari Stotram.mp3",
+    "file": "Music/ShreeHariStotram.mp3",
     "image": "img/Vishnu_storam.jpeg",
     "author": "Anuradha Paudwal"
   },
@@ -42,32 +38,38 @@
     "author": "Amit Trivedi"
   },
   {
-    "title": "Rutho Jo Tum Toh Manau",
-    "file": "Music/Rutho-Jo-Tum-Toh-Manau.mp3",
-    "image": "img/Rutho_Jo_Tum.jpg",
-    "author": "Mohit Chauhan"
-  },
-  {
     "title": "Tum Prem Ho",
-    "file": "Music/Tum Prem Ho.mp3",
+    "file": "Music/TumPremHo.mp3",
     "image": "img/Tum_prem_ho.jpg",
     "author": "Mohit and Bharat Kamal"
   },
   {
     "title": "Shiv Tandav Stotram",
-    "file": "Music/Shiv Tandav Stotram.mp3",
+    "file": "Music/ShivTandavStotram.mp3",
     "image": "img/Shiv_stotam.jpeg",
     "author": "Shankar Mahadevan"
   },
   {
     "title": "Shree Hanuman Chalisa",
-    "file": "Music/Shree Hanuman Chalisa.mp3",
+    "file": "Music/ShreeHanumanChalisa.mp3",
     "image": "img/Hanuman_Chalisa_Poster.jpg",
     "author": "Hariharan"
   },
   {
     "title": "Shree Hari Stotram",
-    "file": "Music/Shree Hari Stotram.mp3",
+    "file": "Music/ShreeHariStotram.mp3",
+    "image": "img/Vishnu_storam.jpeg",
+    "author": "Anuradha Paudwal"
+  },
+  {
+    "title": "Shree Hanuman Chalisa",
+    "file": "Music/ShreeHanumanChalisa.mp3",
+    "image": "img/Hanuman_Chalisa_Poster.jpg",
+    "author": "Hariharan"
+  },
+  {
+    "title": "Shree Hari Stotram",
+    "file": "Music/ShreeHariStotram.mp3",
     "image": "img/Vishnu_storam.jpeg",
     "author": "Anuradha Paudwal"
   }

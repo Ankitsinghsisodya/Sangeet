@@ -10,6 +10,7 @@ async function getSongs() {
     return [];
   }
 }
+let songs;
 
 let isDragging = false;
 let currentSong = new Audio();
@@ -21,7 +22,7 @@ function showAllSongs(songs) {
   for (const song of songs) {
     songUl.innerHTML =
       songUl.innerHTML +
-      ` <li class="flex gap-x-3 justify-between border rounded-md p-2 text-white
+      ` <li class="flex gap-x-2 justify-between border rounded-md p-2 text-white
     bg-gradient-to-r from-yellow-500 to-red-500 cursor-pointer">
                           <img src="./img/music.svg" alt="">
                           <span class="gap-x-2">${song.title}</span>
@@ -33,12 +34,20 @@ function showAllSongs(songs) {
                         <img src="./img/play.svg" alt="" class="absolute bg-green-400 rounded-full p-2 hidden group-hover:block bottom-2 right-2 pl-icon2">
                         <img src="./${song.image}" alt="" class="h-[200px] w-[200px] rounded-md">
                         <h2 class="text-center text-red-500 font-bold">${song.title}</h2>
-                        <p class="text-blue-400 text-center">${song.author}</p>
+                        <p class="text-green-800 font-bold text-center">${song.author}</p>
                       </div>`;
   }
+  document.querySelector("#volumeControl").addEventListener("input", (event) => {
+    if (currentSong) {
+      console.log(event);
+      const volumeValue = event.target.value;
+      currentSong.volume = volumeValue/100;
+      console.log(`Volume set to: ${volumeValue}`);
+    }
+  });
 }
 async function main() {
-  let songs = await getSongs();
+  songs = await getSongs();
 
   // show all the songs int he playlist
 
@@ -124,40 +133,70 @@ async function main() {
     document.querySelector(".left").style.left = "-100%";
     document.querySelector(".left").style.zIndex = "-10000";
   });
+
+  // Add event listener for prev
+  prev.addEventListener("click", (e) => {
+    console.log("previous clicked");
+    currentSong.pause();
+    let index = songs.findIndex((song) => {
+      return song.file === currentSong.src.split("/Public/")[1];
+    });
+    if (index - 1 >= 0 && index != -1) {
+      playSong(songs[index - 1].title);
+    } else currentSong.play();
+  });
+  // Add event listener for next
+  next.addEventListener("click", (e) => {
+    console.log("next clicked");
+
+    currentSong.pause();
+    console.log(currentSong.src.split("/Public/")[1].replaceAll("%20", ""));
+    console.log(currentSong.src);
+    let index = songs.findIndex((song) => {
+      return (
+        song.file === currentSong.src.split("/Public/")[1].replaceAll("%20", "")
+      );
+    });
+
+    if (index + 1 < songs.length && index != -1) {
+      playSong(songs[index + 1].title);
+    } else currentSong.play();
+  });
 }
 
 function playSong(song) {
   getSongs().then((songs) => {
-    for (const songObj of songs) {
-      if (song === songObj.title) {
-        currentSong.src = "./Public/" + songObj.file;
-
-        // Update the current time dynamically
-        currentSong.addEventListener("timeupdate", () => {
-          if (!isDragging) {
-            document.querySelector(".circle").style.left =
-              (currentSong.currentTime / currentSong.duration) * 100 + "%";
-          }
-          const currentTime = formatTime(currentSong.currentTime);
-          const totalDuration = formatTime(currentSong.duration);
+    Array.from(songs).forEach((songObj) => {
+      if (songObj.title == song) {
+        if (song === songObj.title) {
+          currentSong.src = "./Public/" + songObj.file;
 
           // Update the current time dynamically
-          document.querySelector(
-            ".songTime"
-          ).innerHTML = `<p>${currentTime} / ${totalDuration}
-            </p>`;
+          currentSong.addEventListener("timeupdate", () => {
+            if (!isDragging) {
+              document.querySelector(".circle").style.left =
+                (currentSong.currentTime / currentSong.duration) * 100 + "%";
+            }
+            const currentTime = formatTime(currentSong.currentTime);
+            const totalDuration = formatTime(currentSong.duration);
 
-          document.querySelector(
-            ".songName"
-          ).innerHTML = `<p><span class='text-white'>${songObj.title}</span>
-            </p>`;
-        });
+            // Update the current time dynamically
+            document.querySelector(
+              ".songTime"
+            ).innerHTML = `<p>${currentTime} / ${totalDuration}
+              </p>`;
 
-        play.src = "./img/pause.svg";
-        currentSong.play();
-        break;
+            document.querySelector(
+              ".songName"
+            ).innerHTML = `<p><span class='text-white'>${songObj.title}</span>
+              </p>`;
+          });
+
+          play.src = "./img/pause.svg";
+          currentSong.play();
+        }
       }
-    }
+    });
   });
 }
 function formatTime(seconds) {
