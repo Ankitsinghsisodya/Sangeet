@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music_system</title>
+    <title>Sangeet</title>
     <link rel="stylesheet" href="main.css">
     <link rel="icon" href="./Feviconi.ico">
 
@@ -40,7 +40,12 @@
             list-style: none;
             font-weight: bold;
         }
-
+        /* @media (max-width:500px) {
+            .songInfo{
+                display:
+            }
+            
+        } */
         @media (max-width:800px) {
             .left {
                 width: 300px;
@@ -167,7 +172,7 @@
             <div class="absolute bottom-3 w-full mt-3 mb-5 flex ml-3 justify-around overflow-y-hidden">
                 <!-- seekbar -->
                 <div
-                    class="playbar relative w-full   max-w-[50%] h-[37px]  gap-x-2 rounded-3xl bg-gray-500  oveflow-y-hidden mt-2">
+                    class="playbar relative w-full   max-w-[50%] h-[37px]  gap-x-2 rounded-3xl bg-gray-500  oveflow-y-hidden mt-3">
                     <!-- seekbar  -->
                     <div
                         class="seekbar h-[2px] left-2 border-4 border-green-400 absolute bottom-3  right-4 rounded-xl max-w-[97%] mx-auto z-[1000]">
@@ -176,7 +181,7 @@
                         </div>
                     </div>
                     <!-- name and time  -->
-                    <div class="songInfo text-black font-bold z-[100] ml-7 -mt-1 w-full flex justify-between">
+                    <div class="songInfo text-black font-bold z-[100] ml-7 -mt-1 w-full sm:flex justify-between hidden">
                         <div class="songName -ml-2 text-white">
                         </div>
 
@@ -189,8 +194,8 @@
                 <!-- volume  -->
                 <div class="mx-auto mt-2 group">
                     <div
-                        class="bg-green-400 max-h-[30px] w-[30px] flex justify-center items-center mx-auto  cursor-pointer rounded-full goup-hover:bg-blue-500">
-                        <img src="./img/volume.svg" alt="" >
+                        class=" bg-green-400 max-h-[30px] w-[30px] flex justify-center items-center mx-auto  cursor-pointer rounded-full goup-hover:bg-blue-500">
+                        <img src="./img/volume.svg" alt="" id="vol" class="z-[100000]">
                     </div>
                     <div class="range  cursor-pointer hidden group-hover:block transition-all duration-500">
                         <input type="range" name="volume" id="volumeControl" class="cursor-pointer">
@@ -199,7 +204,7 @@
 
                 <!-- songbutton  -->
                 <div
-                    class="songButton flex justify-center  z-10 cursor-pointer mx-auto  bg-green-500  rounded-lg py-2  mr-6 min-w-[75px] max-h-[40px] mt-2">
+                    class="songButton flex justify-center  z-10 cursor-pointer mx-auto  bg-green-500  rounded-lg py-2  mr-6 min-w-[75px] max-h-[40px] mt-3">
 
                     <img src="./img/prevsong.svg" alt="" id="prev" class="black">
                     <img src="./img/play.svg" alt="" class="play-icon" id="play" class="black">

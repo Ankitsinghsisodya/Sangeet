@@ -1,4 +1,4 @@
-# Music System
+# Sangeet System
 
 This is a  web application that allows users to view and play Bhaajan from a collection of songs.
 

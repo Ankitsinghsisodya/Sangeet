@@ -81,6 +81,10 @@ async function main() {
 
   // Attaching event listener of play and pause at seekbar
   play.addEventListener("click", () => {
+    if(!currentSong.src)
+    {
+      alert("please select a song");
+    }
     if (currentSong.paused) {
       currentSong.play();
       play.src = "./img/pause.svg";
@@ -171,6 +175,22 @@ async function main() {
       playSong(songs[index + 1].title);
     } else currentSong.play();
   });
+
+  // Add event listener to mute the track
+  document.querySelector("#vol").addEventListener("click", (e) => {
+    console.log("clicked on silent button");
+    console.log(e.target.src);
+    if (e.target.src.includes("volume.svg")) {
+      e.target.src = e.target.src.replace("volume.svg", "mute.svg");
+
+      currentSong.volume = 0;
+      document.querySelector("#volumeControl").value = 0;
+    } else {
+      e.target.src = e.target.src.replace("mute.svg", "volume.svg");
+      currentSong.volume = 0.1;
+      document.querySelector("#volumeControl").value = 10;
+    }
+  });
 }
 
 function playSong(song) {
@@ -215,5 +235,6 @@ function formatTime(seconds) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  console.log("js is running fine");
   main();
 });
