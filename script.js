@@ -1,6 +1,6 @@
 async function getSongs() {
   try {
-    const response = await fetch("./Public/Music/music.json");
+    const response = await fetch("./Music/music.json");
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -139,7 +139,7 @@ async function main() {
     console.log("previous clicked");
     currentSong.pause();
     let index = songs.findIndex((song) => {
-      return song.file === currentSong.src.split("/Public/")[1];
+      return song.file === currentSong.src.split("/")[1];
     });
     if (index - 1 >= 0 && index != -1) {
       playSong(songs[index - 1].title);
@@ -150,11 +150,11 @@ async function main() {
     console.log("next clicked");
 
     currentSong.pause();
-    console.log(currentSong.src.split("/Public/")[1].replaceAll("%20", ""));
+    console.log(currentSong.src.split("/")[1].replaceAll("%20", ""));
     console.log(currentSong.src);
     let index = songs.findIndex((song) => {
       return (
-        song.file === currentSong.src.split("/Public/")[1].replaceAll("%20", "")
+        song.file === currentSong.src.split("/")[1].replaceAll("%20", "")
       );
     });
 
@@ -169,7 +169,7 @@ function playSong(song) {
     Array.from(songs).forEach((songObj) => {
       if (songObj.title == song) {
         if (song === songObj.title) {
-          currentSong.src = "./Public/" + songObj.file;
+          currentSong.src = songObj.file;
 
           // Update the current time dynamically
           currentSong.addEventListener("timeupdate", () => {

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music_system</title>
+    <link rel="icon" href="/assets/Feviconi-Z9cOVEV2.ico">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "Roboto", serif;
+        }
+
+        body {
+            background-color: black;
+            color: white;
+        }
+
+        /* Hide scrollbar for Chrome, Safari and Opera */
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+        }
+
+        .home ul li {
+            width: 14px;
+            list-style: none;
+            font-weight: bold;
+        }
+
+        @media (max-width:800px) {
+            .left {
+                width: 300px;
+                position: absolute;
+                left: -100%;
+                transition: all 1s;
+                z-index: -10000;
+            }
+        }
+    </style>
+  <link rel="stylesheet" crossorigin href="/assets/index-BWSw_aMB.css">
+</head>
+
+<body>
+
+
+    <div class="flex flex-row w-[100%] overflow-hidden p-0 min-h-[100vh] justify-between">
+
+        <!-- left-section  -->
+        <div class=" h-full left bg-black  min-w-[300px]  p-[12px]  w-full md:w-[25%] ">
+            <div class="temp absolute right-0 m-2 group z-[10000]">
+                <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20width='24'%20height='24'%20fill='none'%20stroke='currentColor'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%20class='close-icon'%3e%3cline%20x1='18'%20y1='6'%20x2='6'%20y2='18'%3e%3c/line%3e%3cline%20x1='6'%20y1='6'%20x2='18'%20y2='18'%3e%3c/line%3e%3c/svg%3e" alt="" class="invert sm:hidden close cursor-pointer z-30">
+            </div>
+            <div class="home  rounded-md text-white bg-[#121212]">
+                <div class="logo flex gap-x-6 relative group">
+
+                    <div>
+                        <img src="/assets/logo-ZDb77lv9.svg" alt="logo" class="mt-2 ml-1 bg-black group-hover:to-blue-300"
+                            width="50px">
+                    </div>
+                    <div>
+                        <h1 class="text-[50px] absolute  text-blue-400 group-hover:text-pink-300">Bhajan
+                        </h1>
+                    </div>
+                </div>
+                <ul class="mt-5 ml-1">
+                    <li class="relative flex gap-x-[15px] gap-y-4 invert  text-black hover:underline cursor-pointer">
+                        <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20data-encore-id='icon'%20role='img'%20aria-hidden='true'%20class='Svg-sc-ytk21e-0%20iYxpxA%20home-active-icon'%20viewBox='0%200%2024%2024'%3e%3cpath%20d='M13.5%201.515a3%203%200%200%200-3%200L3%205.845a2%202%200%200%200-1%201.732V21a1%201%200%200%200%201%201h6a1%201%200%200%200%201-1v-6h4v6a1%201%200%200%200%201%201h6a1%201%200%200%200%201-1V7.577a2%202%200%200%200-1-1.732l-7.5-4.33z'%3e%3c/path%3e%3c/svg%3e" alt="home">
+                        Home
+                    </li>
+                    <li class="flex gap-x-[15px] gap-y-4 mt-1  text-black cursor-pointer hover:unsrline bg-white">
+                        <div class="search-bar bg-white">
+                            <input type="text" id="searchInput" placeholder="Search for a song"
+                                class="bg-white w-[250px]">
+                        </div>
+                    </li>
+                </ul>
+
+
+            </div>
+            <!-- library section  -->
+            <div class="relative  min-h-[82vh]  bg-[#121212] text-gray-100 rounded-md  p-2 mt-1">
+                <div class="heading flex gap-x-2 mb-3">
+                    <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20data-encore-id='icon'%20role='img'%20aria-hidden='true'%20viewBox='0%200%2024%2024'%20class='Svg-sc-ytk21e-0%20iYxpxA'%3e%3cpath%20d='M3%2022a1%201%200%200%201-1-1V3a1%201%200%200%201%202%200v18a1%201%200%200%201-1%201zM15.5%202.134A1%201%200%200%200%2014%203v18a1%201%200%200%200%201%201h6a1%201%200%200%200%201-1V6.464a1%201%200%200%200-.5-.866l-6-3.464zM9%202a1%201%200%200%200-1%201v18a1%201%200%201%200%202%200V3a1%201%200%200%200-1-1z'%3e%3c/path%3e%3c/svg%3e" alt="" class="invert" width="25px">
+                    <h2 class="font-roboto">Your Library</h2>
+                </div>
+                <!-- song-list  -->
+                <div class="song-list max-h-[68vh] overflow-y-scroll no-scrollbar">
+                    <ul class="gap-y-3 flex flex-col justify-between">
+                    </ul>
+                </div>
+                <!-- footer  -->
+                <div
+                    class="footer  flex-wrap text-[12px] text-gray-100 gap-[13px] ml-2 mb-2 absolute bottom-2 hidden sm:flex">
+
+
+                    <div>
+                        <a href="#" data-encore-id="textLink">Legal</a>
+                    </div>
+                    <div>
+                        <a href="#" data-encore-id="textLink">Cookies</a>
+                    </div>
+                    <div>
+                        <a href="#" data-encore-id="textLink">About
+                            Ads</a>
+                    </div>
+                    <div>
+                        <a href="#" data-encore-id="textLink">Accessibility</a>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+
+        <!-- right section -->
+
+        <div class="right  w-[100%] mt-3 pb-20 relative mx-h-[100vh] overflow-y-hidden">
+
+            <!-- navbar  -->
+            <div
+                class="nav flex justify-between bg-gradient-to-r from-blue-500 to-pink-400 rounded-md p-2 border mr-2 ">
+                <div class="header w-full mt-5 flex items-center">
+                    <div>
+                        <img src="data:image/svg+xml,%3csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M4%205L20%205'%20stroke='%23141B34'%20stroke-width='1.5'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cpath%20d='M4%2012L20%2012'%20stroke='%23141B34'%20stroke-width='1.5'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cpath%20d='M4%2019L20%2019'%20stroke='%23141B34'%20stroke-width='1.5'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" alt="" class="hamburger invert sm:hidden cursor-pointer">
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="30px"
+                        height="30px" class="cursor-pointer">
+                        <path d="M14.71 6.71a1 1 0 00-1.42-1.42l-6 6a1 1 0 000 1.42l6 6a1 1 0 001.42-1.42L9.41 12z" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="30px"
+                        height="30px" class="cursor-pointer">
+                        <path d="M9.29 6.71a1 1 0 011.42-1.42l6 6a1 1 0 010 1.42l-6 6a1 1 0 01-1.42-1.42L14.59 12z" />
+                    </svg>
+                </div>
+                <div class="flex mt-5 min-w-[200px] justify-between items-center gap-x-2">
+                    <button
+                        class="text-black font-bold hover:text-white text-xl cursor-pointer transition-all duration-200">Sign
+                        Up</button>
+                    <button class="bg-white text-black rounded-full h-9 w-24 mr-2 font-bold cursor-pointer">Log
+                        in</button>
+                </div>
+            </div>
+            <div class="content">
+                <h1 class="text-white font-semibold text-[50px] font-roboto hover:text-green-400">Sangeet</h1>
+            </div>
+            <!-- music list  -->
+            <div id="songContainer"
+                class=" bg-white flex flex-wrap gap-x-10 gap-y-20 justify-center  max-h-[72vh] overflow-auto no-scrollbar bg-gradient-to-r from-transparent to-blue-500 p-2 pt-2 h-full rounded-md mr-2">
+                <!-- card using js  -->
+            </div>
+
+            <div class="absolute bottom-3 w-full mt-3 mb-5 flex ml-3 justify-around overflow-y-hidden">
+                <!-- seekbar -->
+                <div
+                    class="playbar relative w-full   max-w-[50%] h-[37px]  gap-x-2 rounded-3xl bg-gray-500  oveflow-y-hidden mt-2">
+                    <!-- seekbar  -->
+                    <div
+                        class="seekbar h-[2px] left-2 border-4 border-green-400 absolute bottom-3  right-4 rounded-xl max-w-[97%] mx-auto z-[1000]">
+                        <div
+                            class="circle w-[15px]  h-[15px] rounded-full bg-red-500 absolute  -bottom-2 mx-auto z-0 transition-all duration-100">
+                        </div>
+                    </div>
+                    <!-- name and time  -->
+                    <div class="songInfo text-black font-bold z-[100] ml-7 -mt-1 w-full flex justify-between">
+                        <div class="songName -ml-2 text-white">
+                        </div>
+
+                        <div class="songTime mr-14 text-white">
+                        </div>
+                    </div>
+
+
+                </div>
+                <!-- volume  -->
+                <div class="mx-auto mt-2 group">
+                    <div
+                        class="bg-green-400 max-h-[30px] w-[30px] flex justify-center items-center mx-auto  cursor-pointer rounded-full goup-hover:bg-blue-500">
+                        <img src="data:image/svg+xml,%3csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M13.9998%204H14.7498C14.7498%203.72564%2014.6%203.47317%2014.3592%203.34171C14.1183%203.21024%2013.825%203.22076%2013.5942%203.36913L13.9998%204ZM13.9998%2020L13.5942%2020.6309C13.825%2020.7792%2014.1183%2020.7898%2014.3592%2020.6583C14.6%2020.5268%2014.7498%2020.2744%2014.7498%2020H13.9998ZM2.00049%208.5V7.75C1.58627%207.75%201.25049%208.08579%201.25049%208.5H2.00049ZM2.00049%2015.5H1.25049C1.25049%2015.9142%201.58627%2016.25%202.00049%2016.25V15.5ZM7.00049%208.5V9.25H7.22078L7.40609%209.13087L7.00049%208.5ZM7.00049%2015.5L7.40609%2014.8691L7.22078%2014.75H7.00049V15.5ZM13.2498%204V20H14.7498V4H13.2498ZM1.25049%208.5V15.5H2.75049V8.5H1.25049ZM2.00049%209.25H7.00049V7.75H2.00049V9.25ZM2.00049%2016.25H7.00049V14.75H2.00049V16.25ZM7.40609%209.13087L14.4054%204.63087L13.5942%203.36913L6.59489%207.86913L7.40609%209.13087ZM6.59489%2016.1309L13.5942%2020.6309L14.4054%2019.3691L7.40609%2014.8691L6.59489%2016.1309Z'%20fill='%23141B34'/%3e%3cpath%20d='M17%209C17.6254%209.81968%2018%2010.8634%2018%2012C18%2013.1366%2017.6254%2014.1803%2017%2015'%20stroke='%23141B34'%20stroke-width='1.5'%20stroke-linejoin='round'/%3e%3cpath%20d='M20%207C21.2508%208.36613%2022%2010.1057%2022%2012C22%2013.8943%2021.2508%2015.6339%2020%2017'%20stroke='%23141B34'%20stroke-width='1.5'%20stroke-linejoin='round'/%3e%3c/svg%3e" alt="" >
+                    </div>
+                    <div class="range  cursor-pointer hidden group-hover:block transition-all duration-500">
+                        <input type="range" name="volume" id="volumeControl" class="cursor-pointer">
+                    </div>
+                </div>
+
+                <!-- songbutton  -->
+                <div
+                    class="songButton flex justify-center  z-10 cursor-pointer mx-auto  bg-green-500  rounded-lg py-2  mr-6 min-w-[75px] max-h-[40px] mt-2">
+
+                    <img src="data:image/svg+xml,%3csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M20%2019V5L8%2012L20%2019Z'%20fill='%23000000'%20stroke='%23141B34'%20stroke-width='1.5'%20stroke-linejoin='round'/%3e%3cpath%20d='M4%204V20'%20fill='%23000000'%20stroke='%23141B34'%20stroke-width='1.5'/%3e%3c/svg%3e" alt="" id="prev" class="black">
+                    <img src="data:image/svg+xml,%3csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3c!--%20Circle%20for%20the%20circular%20border%20--%3e%3ccircle%20cx='12'%20cy='12'%20r='11'%20stroke='%23141B34'%20stroke-width='1.5'%20fill='none'%20/%3e%3c!--%20Play%20button%20in%20the%20center%20--%3e%3cpath%20d='M9%2016V8L15%2012L9%2016Z'%20fill='black'%20stroke='%23141B34'%20stroke-width='1.5'%20stroke-linejoin='round'%20stroke-linecap='round'%20/%3e%3c/svg%3e" alt="" class="play-icon" id="play" class="black">
+                    <img src="data:image/svg+xml,%3csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M4%2019V5L16%2012L4%2019Z'%20stroke='%23141B34'%20stroke-width='1.5'%20stroke-linejoin='round'%20fill='%23000000'/%3e%3cpath%20d='M20%204V20'%20stroke='%23141B34'%20stroke-width='1.5'/%3e%3c/svg%3e" alt="" id="next">
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
